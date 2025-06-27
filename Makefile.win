@@ -1,0 +1,46 @@
+# Project: game
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o movimento_player.o inimigos.o projeitil.o utils.o globals.o save.o
+LINKOBJ  = main.o movimento_player.o inimigos.o projeitil.o utils.o globals.o save.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -lmingw32  -lSDL2main -lSDL2  -lSDL2_image -mwindows -lSDL2_ttf
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = game.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+movimento_player.o: movimento_player.c
+	$(CC) -c movimento_player.c -o movimento_player.o $(CFLAGS)
+
+inimigos.o: inimigos.c
+	$(CC) -c inimigos.c -o inimigos.o $(CFLAGS)
+
+projeitil.o: projeitil.c
+	$(CC) -c projeitil.c -o projeitil.o $(CFLAGS)
+
+utils.o: utils.c
+	$(CC) -c utils.c -o utils.o $(CFLAGS)
+
+globals.o: globals.c
+	$(CC) -c globals.c -o globals.o $(CFLAGS)
+
+save.o: save.c
+	$(CC) -c save.c -o save.o $(CFLAGS)
