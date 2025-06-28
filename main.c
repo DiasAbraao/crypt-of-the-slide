@@ -11,6 +11,7 @@
 #include <SDL_ttf.h>
 
 
+// ------- variavreis globais ----------//
 
 char mapa[MAX_LINHAS][MAX_COLUNAS];
 int linhas = 0;
@@ -181,8 +182,8 @@ int main(int argc, char* argv[]) {
     }
     
     if (TTF_Init() == -1) {
-    printf("Erro ao iniciar SDL_ttf: %s\n", TTF_GetError());
-    // trate o erro aqui
+	    printf("Erro ao iniciar SDL_ttf: %s\n", TTF_GetError());
+	    // trate o erro aqui
 	}
 
     
@@ -229,7 +230,7 @@ int main(int argc, char* argv[]) {
 	}
 
     
-    // ------- TEXTURAS ---------//
+    // ------- IMAGENS ---------//
 
     SDL_Surface* surface = IMG_Load("imagens/menu.jpg"); 
     SDL_Surface* surface2 = IMG_Load("imagens/confi.png");
@@ -242,7 +243,7 @@ int main(int argc, char* argv[]) {
     SDL_Surface* surfaceParabens = IMG_Load("imagens/parabens.png");
     
     
-    // -------- TESTES DO CARREGAMENTO DAS TEXTURAS ---------- //
+    // -------- TESTES DO CARREGAMENTO DAS IMAGENS ---------- //
     
     if (!surface || !surface2 || !surface3 || !surface5 || !surface10 || !surfaceInimigo|| !surfaceGameOver || !surfaceFases) {
         printf("Erro ao carregar imagem: %s\n", IMG_GetError());
@@ -274,7 +275,7 @@ int main(int argc, char* argv[]) {
 	SDL_Texture* textureParabens = SDL_CreateTextureFromSurface(renderer, surfaceParabens);
 	SDL_FreeSurface(surfaceParabens);
 		
-	// ------- SDL_RECT POSICIONA AS TEXTURAS -----------//
+	// ------- SDL_RECT POSICIONA AS TEXTURAS DO MENU -----------//
 	
 	Progresso progresso = carregarProgresso();
 	faseAtual = progresso.fase;
@@ -307,11 +308,6 @@ int main(int argc, char* argv[]) {
     clique menu2 = {170, 430, 460, 100};
     clique voltar_status = {20, 510, 240, 50};
     clique voltar_fases = {300, 495, 190, 150};
-    
-    //-------- POSIÇÃO DO PLAYER ---------//
-    
-    inicializarJogador(1.0f, 1.0f);
-
 
     
 	// --------------------LOOP PRINCIPAL ----------------------//
@@ -449,7 +445,7 @@ int main(int argc, char* argv[]) {
         	desenharMapa(renderer, texturaParede);
         	
         	// Atualiza a posição do jogador usando a função externa
-            atualizarMovimentoJogador(state, deltaTime); // <--- Chamada adicionada!
+            atualizarMovimentoJogador(state, deltaTime); 
 
             // Verifica colisão com a saída
             if (verificarColisaoSaida(mapa, linhas, colunas, window)) {

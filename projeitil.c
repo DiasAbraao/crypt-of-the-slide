@@ -45,8 +45,6 @@ void atualizarProjeteis(void) {
                 if (player.vida <= 0) {
                     player.vivo = false;
                     estadoAtual = ESTADO_GAME_OVER;
-                } else {
-                    printf("ola");
                 }
             }
 
@@ -66,7 +64,7 @@ void desenharProjeteis(SDL_Renderer *renderer) {
     int i;
     for (i = 0; i < MAX_PROJETEIS; i++) {
         if (projeteis[i].ativo) {
-            SDL_Rect projRet = {(int)projeteis[i].x, (int)projeteis[i].y, 5, 5}; // Exemplo de tamanho
+            SDL_Rect projRet = {(int)projeteis[i].x, (int)projeteis[i].y, 5, 5}; 
             SDL_RenderFillRect(renderer, &projRet);
         }
     }

@@ -19,7 +19,7 @@ void atualizarMovimentoJogador(const Uint8* keyboardState, float deltaTime) {
     if (keyboardState[SDL_SCANCODE_A]) novaX -= velocidade;
     if (keyboardState[SDL_SCANCODE_D]) novaX += velocidade;
 
-    // Limites do mapa (evitar sair da área)
+    // Limites do mapa 
     if (novaX < 0) novaX = 0;
     if (novaY < 0) novaY = 0;
     if (novaX > colunas - PLAYER_SIZE) novaX = colunas - PLAYER_SIZE;

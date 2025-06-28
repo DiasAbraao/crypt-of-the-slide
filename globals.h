@@ -18,8 +18,6 @@ typedef struct {
     bool vivo;
 } Player;
 
-extern Player player;
-
 typedef enum {
     MENU,
     JOGO,
@@ -42,6 +40,8 @@ typedef struct {
     float dx, dy;
     bool ativo;
 } Projetil;
+
+extern Player player;
 
 
 void dispararProjetil(int x, int y, float dx, float dy);
